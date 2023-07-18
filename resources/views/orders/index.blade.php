@@ -79,7 +79,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($temp_foods as $key => $temp_food)
-                                <form action="{{route('temp.destroy',$temp_food->id)}}" method="post" onsubmit="return confirm('Are You Sure?')">
+                                <form action="{{route('temp.destroy',$temp_food->id)}}" method="post" onsubmit="return confirm('Are You Sure To Remove?')">
                                     @csrf
                                     @method('delete')
                                     <tr data-entry-id="{{ $temp_food->id }}">
@@ -119,15 +119,15 @@
     });
 
     function validateStock() {
-      var input = document.getElementById("qty");
-      var stockElement = document.getElementById("food_id");
-      var selectedOption = stockElement.options[stockElement.selectedIndex];
-      var stock = parseInt(selectedOption.dataset.stock);
+        var input = document.getElementById("qty");
+        var stockElement = document.getElementById("food_id");
+        var selectedOption = stockElement.options[stockElement.selectedIndex];
+        var stock = parseInt(selectedOption.dataset.stock);
 
-      if (parseInt(input.value) > stock) {
-        alert("Exceeds Available Stock!");
-        return false; // Prevent form submission if validation fails
-      }
+        if (parseInt(input.value) > stock) {
+            alert("Exceeds Available Stock!");
+            return false; // Prevent form submission if validation fails
+        }
     }
 </script>
 @endsection
