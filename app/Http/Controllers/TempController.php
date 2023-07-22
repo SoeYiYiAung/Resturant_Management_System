@@ -34,7 +34,15 @@ class TempController extends Controller
                         ->whereDate('end_date', '>=', $currentDate)
                         ->first();
 
-        $promotion=$promotion_data->percent;
+        // dd($promotion_data);
+        if($promotion_data==null)
+        {
+            $promotion=0;
+        }
+        else
+        {
+            $promotion=$promotion_data->percent;
+        }
         $currentDate = Carbon::now();
 
         $calc_promotion=$total*($promotion/100);

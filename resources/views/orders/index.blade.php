@@ -28,7 +28,7 @@
                       <div class="col-lg-4 col-sm-12 col-md-6">
                         <div class="form-group">
                           <label class="required" for="qty">Quantity</label>
-                          <input class="form-control" type="number" name="qty" id="qty" min="1" required inputmode="numeric">
+                          <input class="form-control" type="number" name="qty" id="qty" min="1" max="{{ $food->stock }}" required inputmode="numeric">
                         </div>
                       </div>
 
@@ -112,9 +112,14 @@
         $('.select2').select2();
     });
 
+    var availableStock = <?php echo $food->stock; ?>;
+
     document.getElementById('qty').addEventListener('input', function() {
         if (this.value < 0) {
             this.value = 1; // Set a default value or any other desired action
+        }
+        else if (this.value > availableStock) {
+            this.value = availableStock; // Set the input value to the available stock if it exceeds it
         }
     });
 
