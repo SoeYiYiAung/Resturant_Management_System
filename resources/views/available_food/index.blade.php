@@ -7,7 +7,7 @@
                     
                     <a class="btn btn-dark text-light position-absolute top-0 end-0 "
                         href="{{route('available_food.create')}}">
-                        Add New Food
+                        Add New Food / Drink
                     </a>
             </h5>
         </div>
